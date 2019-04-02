@@ -65,12 +65,13 @@ the databricks file system so the blob storage appears as a native file system
 to python code. The following example shows the simple code to mount the ‘data’
 folder in my azure storage account to the mount point ‘/mnt/frzstg/’
 
-![](images/3.png)
+<img src="images/3.png" width="60%">
 
 Once mounted, Python can access azure storage as native file system through the
 mount point
 
-![](images/4.png)
+<img src="images/4.png" width="60%">
+
 
 -   **Databricks Secrets to store sensitive information**
 
@@ -84,7 +85,7 @@ to create Databricks secret it through Databricks CLI (Command Line Interface).
 With just few simple commands, you may create secret scopes and save your
 secrets in there by typing in the popped-up notepad window
 
-![](images/5.png)
+<img src="images/5.png" width="80%">
 
 -   **Installing required Python libraries**
 
@@ -94,7 +95,8 @@ our scoring notebook, we used JayDeBeApi library to connect to Azure SQL DB
 ‘Libraries’ tab of our cluster and click the ‘Install New’ button and provide
 the library name.
 
-![](images/6.png)
+<img src="images/6.png" width="70%">
+
 
 **Training model and serializing it as a pickle file**
 
