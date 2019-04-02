@@ -49,7 +49,7 @@ Common entities in Azure Databricks environment include:
 
 ![](images/1.png)
 
-![](media/bf9f33eb6a594a5e2b8cdb5c71703a30.png)
+![](images/2.png)
 
 **Setting up Databricks environment**
 
@@ -64,12 +64,12 @@ the databricks file system so the blob storage appears as a native file system
 to python code. The following example shows the simple code to mount the ‘data’
 folder in my azure storage account to the mount point ‘/mnt/frzstg/’
 
-![](media/20d37300ca245c5cd6e099c34ef51900.png)
+![](images/3.png)
 
 Once mounted, Python can access azure storage as native file system through the
 mount point
 
-![](media/e418ec2af48ad7e5ada36b937c3b0e93.png)
+![](images/4.png)
 
 -   **Databricks Secrets to store sensitive information**
 
@@ -83,7 +83,7 @@ to create Databricks secret it through Databricks CLI (Command Line Interface).
 With just few simple commands, you may create secret scopes and save your
 secrets in there by typing in the popped-up notepad window
 
-![](media/24ab9b3d0ef04292d65f394b588bd6ed.png)
+![](images/5.png)
 
 -   **Installing required Python libraries**
 
@@ -93,7 +93,7 @@ our scoring notebook, we used JayDeBeApi library to connect to Azure SQL DB
 ‘Libraries’ tab of our cluster and click the ‘Install New’ button and provide
 the library name.
 
-![](media/bacda560c55659898e1e4f5e0027e094.png)
+![](images/6.png)
 
 **Training model and serializing it as a pickle file**
 
@@ -103,23 +103,6 @@ libraries and to load our dataset into pandas dataframe. Note that the data is
 read from mount point (to azure storage, created earlier) just like pandas would
 read from local file system.
 
-![](media/f44cb4280077403117802d2f022dbf23.png)
+![](images/7.png)
 
-Next we do some data cleanup (replacing missing values with zero), separate out
-features (data used to train algorithm) from our label (column holding values
-that we want algorithm to predict) and divide the dataset into training and
-validation set.
-
-![](media/28f48bb4549ddc33a2cf0d2de3fa33e0.png)
-
-With this we are all set to train our model to predict who survived
-
-![](media/f96aa3ed4a0844f26e6af7e96d995c12.png)
-
-Let’s checkout the accuracy of our newly trained model
-
-![](media/15120ce31ecba7498666d5a9ee070fe8.png)
-
-Finally, let’s serialize our trained model
-
-![](media/01abbc496243509342ce59d9f7e4c839.png)
+Feel free to download and take a look at the rest of the training notebook from notebooks folder
