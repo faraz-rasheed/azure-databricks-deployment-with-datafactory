@@ -139,7 +139,7 @@ Next we setup our jdbc url and create a connection with jaydebeapi
 
 Pandas can now read from our table by just passing a simple SQL query
 
-<img src="images/10.png" width="70%">
+<img src="images/10.png" width="60%">
 
 Now we are all set to load (deserialize) our model, make predictions for our
 data and add our predictions as a column to loaded data
@@ -175,13 +175,13 @@ Setting up blob storage dataset involves providing storage account name and
 access key to connect and pointing to the directory (container) or file that we
 want to move
 
-<img src="images/14.png" width="90%">
+<img src="images/14.png" width="100%">
 
 Next lets define schema for the referenced data, in most cases, we are able to
 achieve this by clicking import schema to let data factory learn schema from the
 csv file
 
-<img src="images/15.png" width="50%">
+<img src="images/15.png" width="45%">
 
 -   **Azure SQL DB Dataset**
 
@@ -207,9 +207,9 @@ want to create a new cluster for the job (that would get terminated once the job
 is complete). Next, we need to identify the target underlying notebook this
 activity would be running
 
-<img src="images/17.png" width="60%">
+<img src="images/17.png" width="50%">
 
-<img src="images/18.png" width="60%">
+<img src="images/18.png" width="50%">
 
 -   **Copy Activity**
 
@@ -221,9 +221,9 @@ is both of our datasets, schema mapping in copy activity is also very straight
 forward. Such schema mapping becomes very handing when your source and sink
 datasets do not have matching or same number of columns.
 
-<img src="images/19.png" width="60%">
+<img src="images/19.png" width="50%">
 
-<img src="images/20.png" width="60%">
+<img src="images/20.png" width="50%">
 
 <img src="images/21.png" width="60%">
 
@@ -239,7 +239,7 @@ We rather ‘publish’ our pipeline and validate its completeness with the
 
 Pipelines are scheduled by creating a ‘Trigger’ and scheduling properties
 
-<img src="images/23.png" width="50%">
+<img src="images/23.png" width="45%">
 
 **Monitoring Pipeline Run**
 
@@ -254,5 +254,5 @@ In case of an activity failure, we can drill down and in case of our databricks
 notebook activity, we can even open the exact instance of databricks notebook
 with cell status and error messages right within the notebook
 
-<img src="images/25.png" width="70%">
+<img src="images/25.png" width="60%">
 
