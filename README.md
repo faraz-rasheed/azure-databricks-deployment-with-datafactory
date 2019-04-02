@@ -105,4 +105,4 @@ read from local file system.
 
 ![](images/7.png)
 
-Feel free to download and take a look at the rest of the training notebook from notebooks folder
+Feel free to download and take a look at the rest of the training notebook from notebooks folder ![](databricks-notebooks/)
