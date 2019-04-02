@@ -106,3 +106,46 @@ read from local file system.
 ![](images/7.png)
 
 Feel free to download and take a look at the rest of the training notebook from [notebooks folder](databricks-notebooks/)
+
+**Model scoring scenario**
+
+Before we jump into the scoring code, let’s review our deployment scenario. We
+now have got the model that know how to predict if a passenger is likely to
+survive or not. Azure SQL DB is our production database system where we expect
+to receive new passenger data every day in a specified table, thus we will setup
+our model scoring (python) job to run every night, reading new passenger data,
+produce predictions if they are likely to survive and store the results back to
+a separate table in SQL DB. In our case, we write our predictions first to Azure
+storage as a csv file and then load the data from there to the Azure SQL DB
+database using Azure data factory. This helps us ensure that issues like
+connection failures, incomplete writes and efficient data load is handled by a
+mature orchestration tool like data factory. Such a decoupling also adds other
+benefits like writing to multiple destinations and triggering another job not
+discussed in this blog.
+
+**Model scoring code**
+
+We start our notebook with loading database connectivity attributes from our
+secret scope
+
+![](images/8.png)
+
+Next we setup our jdbc url and create a connection with jaydebeapi
+
+![](images/9.png)
+
+Pandas can now read from our table by just passing a simple SQL query
+
+![](images/10.png)
+
+Now we are all set to load (deserialize) our model, make predictions for our
+data and add our predictions as a column to loaded data
+
+![](images/11.png)
+
+Finally let’s write our data including predictions as a csv file to our mounted
+azure storage (don’t forget to close the jdbc connection, though!)
+
+![](images/12.png)
+
+
