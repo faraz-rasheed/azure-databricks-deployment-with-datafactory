@@ -149,7 +149,7 @@ data and add our predictions as a column to loaded data
 Finally let’s write our data including predictions as a csv file to our mounted
 azure storage (don’t forget to close the jdbc connection, though!)
 
-<img src="images/12.png" width="70%">
+<img src="images/12.png" width="60%">
 
 **Azure Data Factory Overview**
 
@@ -159,7 +159,7 @@ tool and does not require any local installation. In our case, we use data
 factory to automate our production job running our scoring databricks notebook
 to generate new predictions and loading these to our SQL DB table.
 
-<img src="images/13.png" width="70%">
+<img src="images/13.png" width="60%">
 
 **Setting up Datasets**
 
@@ -175,13 +175,13 @@ Setting up blob storage dataset involves providing storage account name and
 access key to connect and pointing to the directory (container) or file that we
 want to move
 
-<img src="images/14.png" width="70%">
+<img src="images/14.png" width="90%">
 
 Next lets define schema for the referenced data, in most cases, we are able to
 achieve this by clicking import schema to let data factory learn schema from the
 csv file
 
-<img src="images/15.png" width="70%">
+<img src="images/15.png" width="50%">
 
 -   **Azure SQL DB Dataset**
 
@@ -191,7 +191,7 @@ read passwords and other sensitive information from Azure Key Vault. Next we let
 data factory import referenced table schema just like we did for our blob
 storage dataset
 
-<img src="images/16.png" width="70%">
+<img src="images/16.png" width="80%">
 
 **Setting up Pipeline Activities**
 
@@ -207,9 +207,9 @@ want to create a new cluster for the job (that would get terminated once the job
 is complete). Next, we need to identify the target underlying notebook this
 activity would be running
 
-<img src="images/17.png" width="70%">
+<img src="images/17.png" width="60%">
 
-<img src="images/18.png" width="70%">
+<img src="images/18.png" width="60%">
 
 -   **Copy Activity**
 
@@ -221,11 +221,11 @@ is both of our datasets, schema mapping in copy activity is also very straight
 forward. Such schema mapping becomes very handing when your source and sink
 datasets do not have matching or same number of columns.
 
-![](images/19.png)
+<img src="images/19.png" width="60%">
 
-![](images/20.png)
+<img src="images/20.png" width="60%">
 
-![](images/21.png)
+<img src="images/21.png" width="60%">
 
 **Publishing and Validating Data Factory Pipeline**
 
@@ -233,13 +233,13 @@ As Data Factory is a web based tool, there is no save button for our dataflow.
 We rather ‘publish’ our pipeline and validate its completeness with the
 ‘Validate’ link
 
-![](images/22.png)
+<img src="images/22.png" width="60%">
 
 **Pipeline Scheduling**
 
 Pipelines are scheduled by creating a ‘Trigger’ and scheduling properties
 
-![](images/23.png)
+<img src="images/23.png" width="50%">
 
 **Monitoring Pipeline Run**
 
@@ -248,11 +248,11 @@ deployment is its monitoring and management platform. It lets you monitor
 pipeline runs, their status (running, succeeded and failed) and to even drill
 down into the status of individual activities within pipeline.
 
-![](images/24.png)
+<img src="images/24.png" width="80%">
 
 In case of an activity failure, we can drill down and in case of our databricks
 notebook activity, we can even open the exact instance of databricks notebook
 with cell status and error messages right within the notebook
 
-![](images/25.png)
+<img src="images/25.png" width="70%">
 
