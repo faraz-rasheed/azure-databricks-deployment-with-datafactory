@@ -65,7 +65,7 @@ the databricks file system so the blob storage appears as a native file system
 to python code. The following example shows the simple code to mount the ‘data’
 folder in my azure storage account to the mount point ‘/mnt/frzstg/’
 
-<img src="images/3.png" width="60%">
+<img src="images/3.png" width="80%">
 
 Once mounted, Python can access azure storage as native file system through the
 mount point
@@ -106,7 +106,7 @@ libraries and to load our dataset into pandas dataframe. Note that the data is
 read from mount point (to azure storage, created earlier) just like pandas would
 read from local file system.
 
-![](images/7.png)
+<img src="images/7.png" width="70%">
 
 Feel free to download and take a look at the rest of the training notebook from [notebooks folder](databricks-notebooks/)
 
@@ -131,25 +131,25 @@ discussed in this blog.
 We start our notebook with loading database connectivity attributes from our
 secret scope
 
-![](images/8.png)
+<img src="images/8.png" width="70%">
 
 Next we setup our jdbc url and create a connection with jaydebeapi
 
-![](images/9.png)
+<img src="images/9.png" width="70%">
 
 Pandas can now read from our table by just passing a simple SQL query
 
-![](images/10.png)
+<img src="images/10.png" width="70%">
 
 Now we are all set to load (deserialize) our model, make predictions for our
 data and add our predictions as a column to loaded data
 
-![](images/11.png)
+<img src="images/11.png" width="70%">
 
 Finally let’s write our data including predictions as a csv file to our mounted
 azure storage (don’t forget to close the jdbc connection, though!)
 
-![](images/12.png)
+<img src="images/12.png" width="70%">
 
 **Azure Data Factory Overview**
 
