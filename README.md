@@ -49,7 +49,8 @@ Common entities in Azure Databricks environment include:
 
 ![](images/1.png)
 
-![](images/2.png){:width="200px"}
+<img src="images/2.png" width="200">
+
 
 **Setting up Databricks environment**
 
