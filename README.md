@@ -106,7 +106,7 @@ libraries and to load our dataset into pandas dataframe. Note that the data is
 read from mount point (to azure storage, created earlier) just like pandas would
 read from local file system.
 
-<img src="images/7.png" width="70%">
+<img src="images/7.png" width="80%">
 
 Feel free to download and take a look at the rest of the training notebook from [notebooks folder](databricks-notebooks/)
 
@@ -135,7 +135,7 @@ secret scope
 
 Next we setup our jdbc url and create a connection with jaydebeapi
 
-<img src="images/9.png" width="70%">
+<img src="images/9.png" width="80%">
 
 Pandas can now read from our table by just passing a simple SQL query
 
@@ -144,7 +144,7 @@ Pandas can now read from our table by just passing a simple SQL query
 Now we are all set to load (deserialize) our model, make predictions for our
 data and add our predictions as a column to loaded data
 
-<img src="images/11.png" width="70%">
+<img src="images/11.png" width="80%">
 
 Finally let’s write our data including predictions as a csv file to our mounted
 azure storage (don’t forget to close the jdbc connection, though!)
@@ -159,7 +159,7 @@ tool and does not require any local installation. In our case, we use data
 factory to automate our production job running our scoring databricks notebook
 to generate new predictions and loading these to our SQL DB table.
 
-![](images/13.png)
+<img src="images/13.png" width="70%">
 
 **Setting up Datasets**
 
@@ -175,13 +175,13 @@ Setting up blob storage dataset involves providing storage account name and
 access key to connect and pointing to the directory (container) or file that we
 want to move
 
-![](images/14.png)
+<img src="images/14.png" width="70%">
 
 Next lets define schema for the referenced data, in most cases, we are able to
 achieve this by clicking import schema to let data factory learn schema from the
 csv file
 
-![](images/15.png)
+<img src="images/15.png" width="70%">
 
 -   **Azure SQL DB Dataset**
 
@@ -191,7 +191,7 @@ read passwords and other sensitive information from Azure Key Vault. Next we let
 data factory import referenced table schema just like we did for our blob
 storage dataset
 
-![](images/16.png)
+<img src="images/16.png" width="70%">
 
 **Setting up Pipeline Activities**
 
@@ -207,9 +207,9 @@ want to create a new cluster for the job (that would get terminated once the job
 is complete). Next, we need to identify the target underlying notebook this
 activity would be running
 
-![](images/17.png)
+<img src="images/17.png" width="70%">
 
-![](images/18.png)
+<img src="images/18.png" width="70%">
 
 -   **Copy Activity**
 
