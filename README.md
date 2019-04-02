@@ -47,7 +47,7 @@ Common entities in Azure Databricks environment include:
     who gets access to the workspace and what type of access they got (read
     only, contributor, admin)
 
-![](media/9b69d957c1c40f7ae95bc32b8bbf6b92.png)
+![](images/1.png)
 
 ![](media/bf9f33eb6a594a5e2b8cdb5c71703a30.png)
 
