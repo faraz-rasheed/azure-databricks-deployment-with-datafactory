@@ -1,4 +1,4 @@
-# azure-databricks-deployment-with-datafactory
+# Azure Databricks Deployment with Azure Datafactory
 
 **Scenario Modeled**
 
@@ -148,4 +148,108 @@ azure storage (don’t forget to close the jdbc connection, though!)
 
 ![](images/12.png)
 
+**Azure Data Factory Overview**
+
+Azure Data Factory orchestrates production workflows, schedule and provide
+workflow management and monitoring services. Data Factory is a browser based
+tool and does not require any local installation. In our case, we use data
+factory to automate our production job running our scoring databricks notebook
+to generate new predictions and loading these to our SQL DB table.
+
+![](images/13.png)
+
+**Setting up Datasets**
+
+Our scoring notebook loads data from SQL DB, generates predictions using our
+trained model and writes the predictions to azure storage as csv file. In our
+data factory pipeline, we need to copy this csv file from azure storage and load
+the predictions to our SQL DB table. The two datasets involved are azure blob
+storage and azure SQL DB
+
+-   **Azure Blob Storage Dataset**
+
+Setting up blob storage dataset involves providing storage account name and
+access key to connect and pointing to the directory (container) or file that we
+want to move
+
+![](images/14.png)
+
+Next lets define schema for the referenced data, in most cases, we are able to
+achieve this by clicking import schema to let data factory learn schema from the
+csv file
+
+![](images/15.png)
+
+-   **Azure SQL DB Dataset**
+
+Setting up Azure SQL DB as our second dataset involves providing connection
+information and the target database and table. Please note that data factory may
+read passwords and other sensitive information from Azure Key Vault. Next we let
+data factory import referenced table schema just like we did for our blob
+storage dataset
+
+![](images/16.png)
+
+**Setting up Pipeline Activities**
+
+Our workflow pipeline is straight forward here; run the databricks notebook to
+generate predictions and copy the generated csv file from azure blob storage to
+our target SQL DB table
+
+-   **Databricks Notebook Activity**
+
+Creating Azure Databricks notebook activity involves providing the Databricks
+domain, access token and identifying if we want to use an existing cluster or
+want to create a new cluster for the job (that would get terminated once the job
+is complete). Next, we need to identify the target underlying notebook this
+activity would be running
+
+![](images/17.png)
+
+![](images/18.png)
+
+-   **Copy Activity**
+
+Copy Activity is also very straight forward. We pick our blob storage dataset as
+source, our SQL DB dataset as sink and define the field/column mapping for the
+two sources. Please note that we defined a pre-copy script in our SQL DB sink to
+delete the existing records in our target table. Since we already defined schema
+is both of our datasets, schema mapping in copy activity is also very straight
+forward. Such schema mapping becomes very handing when your source and sink
+datasets do not have matching or same number of columns.
+
+![](images/19.png)
+
+![](images/20.png)
+
+![](images/21.png)
+
+**Publishing and Validating Data Factory Pipeline**
+
+As Data Factory is a web based tool, there is no save button for our dataflow.
+We rather ‘publish’ our pipeline and validate its completeness with the
+‘Validate’ link
+
+![](images/22.png)
+
+**Pipeline Scheduling**
+
+Pipelines are scheduled by creating a ‘Trigger’ and scheduling properties
+
+![](images/23.png)
+
+**Monitoring Pipeline Run**
+
+The most attractive capability of data factory for our machine learning model
+deployment is its monitoring and management platform. It lets you monitor
+pipeline runs, their status (running, succeeded and failed) and to even drill
+down into the status of individual activities within pipeline.
+
+![](images/24.png)
+
+In case of an activity failure, we can drill down and in case of our databricks
+notebook activity, we can even open the exact instance of databricks notebook
+with cell status and error messages right within the notebook
+
+![](images/25.png)
 
